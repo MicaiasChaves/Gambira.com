@@ -1,4 +1,6 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
+import { supabase } from "./supabase";
+import Login from "./Login";
 
 // ═══════════════════════════════════════════════════════════════
 // DADOS INICIAIS
@@ -1388,6 +1390,18 @@ function Inteligencia({vendas,manutencoes,contratos,clientes,estoque}){
 // APP ROOT
 // ═══════════════════════════════════════════════════════════════
 export default function App(){
+  const [user, setUser] = useState(null);
+  const [trialExpirado, setTrialExpirado] = useState(false);
+
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (session) setUser(session.user);
+    });
+    supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session ? session.user : null);
+    });
+  }, []);
+
   const [tab,         setTab]         = useState("dashboard");
   const [clientes,    setClientes]    = useState(INIT_CLIENTES);
   const [contratos,   setContratos]   = useState(INIT_CONTRATOS);
@@ -1452,8 +1466,7 @@ export default function App(){
         </div>
 
         <div style={{flex:1,padding:"20px 18px",maxWidth:940,overflowY:"auto"}}>
-          {pages[tab]}
-        </div>
+{!user ? <Login onLogin={setUser} /> : pages[tab]}        </div>
       </div>
     </div>
   );

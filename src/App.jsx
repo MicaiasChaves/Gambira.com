@@ -203,7 +203,7 @@ function Dashboard({contratos,manutencoes,estoque,vendas}){
     <div style={{display:"flex",flexDirection:"column",gap:20}}>
       <div>
         <h2 style={{margin:0,fontSize:22,fontWeight:800,color:C.text}}>Visão Geral</h2>
-        <p style={{margin:"3px 0 0",color:C.muted,fontSize:12}}>Gambira.Com — Painel de controle</p>
+        <p style={{margin:"3px 0 0",color:C.muted,fontSize:12}}>Gestão do Brita — Painel de controle</p>
       </div>
 
       <Card style={{background:"linear-gradient(135deg,#0f1f3d,#1a1040)",border:`1px solid ${C.blue}33`,padding:"20px 22px"}}>
@@ -1044,7 +1044,7 @@ function Manutencao({manutencoes,setManutencoes,clientes}){
 // ═══════════════════════════════════════════════════════════════
 function Cobranca({contratos}){
   function gerarMensagem(c){
-    return`Olá ${c.clienteNome}! 😊 Passando para lembrar que sua parcela referente ao *${c.produto}* vence em *${c.vencimento}*. Valor: *${fmt(c.valor/c.parcelas)}*. Qualquer dúvida, estou à disposição! 🙏 — Gambira.Com`;
+    return`Olá ${c.clienteNome}! 😊 Passando para lembrar que sua parcela referente ao *${c.produto}* vence em *${c.vencimento}*. Valor: *${fmt(c.valor/c.parcelas)}*. Qualquer dúvida, estou à disposição! 🙏 — Gestão do Brita`;
   }
   return(
     <div style={{display:"flex",flexDirection:"column",gap:20}}>
@@ -1436,7 +1436,7 @@ export default function App(){
         <div style={{display:"flex",alignItems:"center",gap:10}}>
           <div style={{width:32,height:32,background:"linear-gradient(135deg,#3b82f6,#a855f7)",borderRadius:9,display:"flex",alignItems:"center",justifyContent:"center",fontSize:17}}>📱</div>
           <div>
-            <p style={{margin:0,fontWeight:800,fontSize:15,color:C.text}}>Gambira<span style={{color:C.blue}}>.Com</span></p>
+            <p style={{margin:0,fontWeight:800,fontSize:15,color:C.text}}>Gestão do Brita<span style={{color:C.blue}}>.Com</span></p>
             <p style={{margin:0,fontSize:10,color:C.muted}}>Sistema de Gestão</p>
           </div>
         </div>
